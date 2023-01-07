@@ -20,28 +20,38 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="HEX&#39;s Blog">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="题目链接Grid Xor 题目大意现在有矩阵A和矩阵B,矩阵B的每一个位置上的数是矩阵A这个位置的相邻位置上的数字异或和，现在给定矩阵B,求矩阵A的异或和 解题思路简单看一下这道题，我们会发现，可以通过选取B中某些数字的异或和来求出A中全部数字的异或和，例如现在给定一个$2 \times 2$的矩阵B,我们将他们的结果写出来$$\begin{bmatrix}a_{1,2} \bigoplus a_">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Grid-xor">
+<meta property="og:url" content="http://example.com/2023/01/08/Grid-xor/index.html">
 <meta property="og:site_name" content="HEX&#39;s Blog">
+<meta property="og:description" content="题目链接Grid Xor 题目大意现在有矩阵A和矩阵B,矩阵B的每一个位置上的数是矩阵A这个位置的相邻位置上的数字异或和，现在给定矩阵B,求矩阵A的异或和 解题思路简单看一下这道题，我们会发现，可以通过选取B中某些数字的异或和来求出A中全部数字的异或和，例如现在给定一个$2 \times 2$的矩阵B,我们将他们的结果写出来$$\begin{bmatrix}a_{1,2} \bigoplus a_">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/01/08/Grid-xor/Grid-xor/Grid-xor_1.png">
+<meta property="og:image" content="http://example.com/2023/01/08/Grid-xor/Grid-xor/Grid-xor_2.png">
+<meta property="og:image" content="http://example.com/2023/01/08/Grid-xor/Grid-xor/Grid-xor_3.png">
+<meta property="og:image" content="http://example.com/2023/01/08/Grid-xor/Grid-xor/Grid-xor_04.png">
+<meta property="article:published_time" content="2023-01-07T17:42:16.000Z">
+<meta property="article:modified_time" content="2023-01-07T17:50:56.208Z">
 <meta property="article:author" content="HEX">
+<meta property="article:tag" content="constructive">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/01/08/Grid-xor/Grid-xor/Grid-xor_1.png">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2023/01/08/Grid-xor/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>HEX's Blog</title>
+  <title>Grid-xor | HEX's Blog</title>
   
 
 
@@ -139,9 +149,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
@@ -157,10 +168,9 @@
       <meta itemprop="name" content="HEX's Blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/01/08/Grid-xor/" class="post-title-link" itemprop="url">Grid-xor</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Grid-xor
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -184,152 +194,39 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1628/C">Grid Xor</a></p>
+        <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1628/C">Grid Xor</a></p>
 <h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>现在有矩阵A和矩阵B,矩阵B的每一个位置上的数是矩阵A这个位置的<em><strong>相邻位置</strong></em>上的数字异或和，现在给定矩阵B,求矩阵A的异或和</p>
 <h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>简单看一下这道题，我们会发现，可以通过选取B中某些数字的异或和来求出A中全部数字的异或和，例如现在给定一个$2 \times 2$的矩阵B,我们将他们的结果写出来<br>$$\begin{bmatrix}<br>a_{1,2} \bigoplus a_{2,1} &amp;a_{1,1} \bigoplus a_{2,2}\\<br>a_{1,1} \bigoplus a_{2,2}&amp;a_{2,1} \bigoplus a_{1,1}\<br>\end{bmatrix}$$<br>不难发现，当$b_{1,1}$与$b_{1,2}$的异或和恰为$a_{1,1} $^$a_{1,2}$^$a_{2,1}$^$a_{2,2}$,就是我们要求出的答案，那么我们不妨将这个问题推广到$4 \times 4$的矩阵，我们用橙黄色来表示我们选择的B中的元素，每当我们选择一个B中的元素并将他们表示为A中的元素后，我们用蓝色来表示已经异或进来的A中的元素，下面我们来实现这个过程<br> <img src="./Grid-xor/Grid-xor_1.png" width=30%><br> $\qquad$<br> <img src="./Grid-xor/Grid-xor_2.png" width=30%><br> 第一次我们选择格子$(1,1)$,此时$sum&#x3D; a_{1,2} \bigoplus a_{2,1} $</p>
 <p><img src="./Grid-xor/Grid-xor_3.png" width=30%>  $\qquad$<br> <img src="./Grid-xor/Grid-xor_04.png" width=30%><br> 第二次我们选择格子$(1,2)$,此时$sum&#x3D; a_{1,1} \bigoplus a_{1,2} \bigoplus a_{1,3} \bigoplus a_{2,1} \bigoplus a_{2,2}$，可以证明当n为偶数时，只要我们不断去找<em><strong>邻居格子还一个都没有被占据</strong></em>的格子并将他加入到异或和中，最终就一定可以将蓝色铺满整个矩形，亦即求出A矩阵的异或和</p>
 <h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line">ll a[<span class="number">1005</span>][<span class="number">1005</span>];</span><br><span class="line">ll vis[<span class="number">1005</span>][<span class="number">1005</span>];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ll n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>,&amp;a[i][j]),vis[i][j]=<span class="number">0</span>;</span><br><span class="line">    ll ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">            ll have=<span class="number">0</span>,need=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(i+<span class="number">1</span>&lt;=n) have++,need+=(vis[i+<span class="number">1</span>][j]==<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">if</span>(i<span class="number">-1</span>&gt;=<span class="number">1</span>) have++,need+=(vis[i<span class="number">-1</span>][j]==<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">if</span>(j+<span class="number">1</span>&lt;=n) have++,need+=(vis[i][j+<span class="number">1</span>]==<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">if</span>(j<span class="number">-1</span>&gt;=<span class="number">1</span>) have++,need+=(vis[i][j<span class="number">-1</span>]==<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">if</span>(need&lt;have) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">else</span> ans^=a[i][j],vis[i+<span class="number">1</span>][j]=vis[i<span class="number">-1</span>][j]=vis[i][j+<span class="number">1</span>]=vis[i][j<span class="number">-1</span>]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ll T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--) <span class="built_in">solve</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/constructive/" rel="tag"># constructive</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/06/%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%90%88%E5%B9%B6%E4%BA%8C/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="HEX">
-      <meta itemprop="description" content="">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HEX's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/01/06/%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%90%88%E5%B9%B6%E4%BA%8C/" class="post-title-link" itemprop="url">线段树合并</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2023-01-06 21:45:36 / Modified: 21:46:56" itemprop="dateCreated datePublished" datetime="2023-01-06T21:45:36+08:00">2023-01-06</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="例题一"><a href="#例题一" class="headerlink" title="例题一"></a>例题一</h2><h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3224">HNOI2022永无乡</a></p>
-<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>首先我们看到，这道题要让我们求出给定集合内的第k小，并且支持集合的合并操作。这让我们想到可以用权值线段树进行第k小的查询，用线段树合并来完成集合的合并操作，下面我们进行代码的实现<br>首先是第k小的查询</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">query</span><span class="params">(ll loc,ll cl,ll cr,ll k)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(tree[loc].sum&lt;k) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;<span class="comment">//如果集合中的数字小于k个，直接返回-1</span></span><br><span class="line">    <span class="keyword">if</span>(cl==cr) <span class="keyword">return</span> cl;</span><br><span class="line">    ll mid=(cl+cr)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(tree[<span class="built_in">ls</span>(loc)].sum&gt;=k) <span class="keyword">return</span> <span class="built_in">query</span>(<span class="built_in">ls</span>(loc),cl,mid,k);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">query</span>(<span class="built_in">rs</span>(loc),mid+<span class="number">1</span>,cr,k-tree[<span class="built_in">ls</span>(loc)].sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后我们来完成集合的合并操作</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b,<span class="type">int</span> l,<span class="type">int</span> r,<span class="type">int</span> Root)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!a) <span class="keyword">return</span> b;</span><br><span class="line">    <span class="keyword">if</span>(!b) <span class="keyword">return</span> a;</span><br><span class="line">    <span class="type">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="built_in">ls</span>(a)=<span class="built_in">merge</span>(<span class="built_in">ls</span>(a),<span class="built_in">ls</span>(b),l,mid,Root);</span><br><span class="line">    <span class="built_in">rs</span>(a)=<span class="built_in">merge</span>(<span class="built_in">rs</span>(a),<span class="built_in">rs</span>(b),mid+<span class="number">1</span>,r,Root);</span><br><span class="line">    <span class="built_in">push_up</span>(a);</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;<span class="comment">//进行线段树合并</span></span><br></pre></td></tr></table></figure>
-<p>以上就是解决这道题的核心代码，还有一个要注意的地方在于，当我们更新了一个岛屿所属的线段树后，要同步更新所有跟他联通的岛屿所属的线段树，这一步要通过并查集来完成,在u和v之间建桥，直接合并的并不是u和v，而是u和v所属集合在并查集上的根节点</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ra=root[<span class="built_in">find</span>(a)];</span><br><span class="line"><span class="type">int</span> rb=root[<span class="built_in">find</span>(b)];</span><br><span class="line"><span class="built_in">Merge</span>(a,b);<span class="comment">//这是并查集的合并操作</span></span><br><span class="line"><span class="keyword">if</span>(ra==rb) <span class="keyword">continue</span>;</span><br><span class="line">root[a]=root[b]=<span class="built_in">merge</span>(ra,rb,<span class="number">1</span>,n,ra);<span class="comment">//进行合并，并更新两个树的根节点位置</span></span><br></pre></td></tr></table></figure>
-<p>这样，我们便解决了这道题</p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/01/06/%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%90%88%E5%B9%B6%E4%BA%8C/" rel="prev" title="线段树合并">
+      <i class="fa fa-chevron-left"></i> 线段树合并
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/06/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="HEX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HEX's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/01/06/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2023-01-06 19:43:44 / Modified: 21:15:58" itemprop="dateCreated datePublished" datetime="2023-01-06T19:43:44+08:00">2023-01-06</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Hello World!欢迎来到HEX队的博客</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -382,6 +279,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E5%A4%A7%E6%84%8F"><span class="nav-number">2.</span> <span class="nav-text">题目大意</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">2.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.2.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
