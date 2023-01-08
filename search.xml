@@ -26,6 +26,12 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2023/01/06/hello-world/</url>
+    <content><![CDATA[<p>Hello World!欢迎来到HEX队的博客</p>
+]]></content>
+  </entry>
+  <entry>
     <title>线段树合并</title>
     <url>/2023/01/06/%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%90%88%E5%B9%B6%E4%BA%8C/</url>
     <content><![CDATA[<h2 id="例题一"><a href="#例题一" class="headerlink" title="例题一"></a>例题一</h2><h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><p><a href="https://www.luogu.com.cn/problem/P3224">HNOI2022永无乡</a></p>
@@ -36,12 +42,6 @@
 <p>以上就是解决这道题的核心代码，还有一个要注意的地方在于，当我们更新了一个岛屿所属的线段树后，要同步更新所有跟他联通的岛屿所属的线段树，这一步要通过并查集来完成,在u和v之间建桥，直接合并的并不是u和v，而是u和v所属集合在并查集上的根节点</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> ra=root[<span class="built_in">find</span>(a)];</span><br><span class="line"><span class="type">int</span> rb=root[<span class="built_in">find</span>(b)];</span><br><span class="line"><span class="built_in">Merge</span>(a,b);<span class="comment">//这是并查集的合并操作</span></span><br><span class="line"><span class="keyword">if</span>(ra==rb) <span class="keyword">continue</span>;</span><br><span class="line">root[a]=root[b]=<span class="built_in">merge</span>(ra,rb,<span class="number">1</span>,n,ra);<span class="comment">//进行合并，并更新两个树的根节点位置</span></span><br></pre></td></tr></table></figure>
 <p>这样，我们便解决了这道题</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2023/01/06/hello-world/</url>
-    <content><![CDATA[<p>Hello World!欢迎来到HEX队的博客</p>
 ]]></content>
   </entry>
 </search>
